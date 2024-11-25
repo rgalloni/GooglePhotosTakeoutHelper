@@ -15,7 +15,13 @@ final _commonDatetimePatterns = [
   [
     RegExp(
         r'(?<date>(20|19|18)\d{2}(01|02|03|04|05|06|07|08|09|10|11|12)[0-3]\d_\d{6})'),
-    'YYYYMMDD_hhmmss',
+    'YYYYMMDD_hhmmss',  // example: 20190620_184109.jpg
+
+  ],
+  [
+    RegExp(
+        r'(20|19|18)\d{2}(01|02|03|04|05|06|07|08|09|10|11|12)[0-3]\d_\d{6}'),
+    'YYYYMMDD_hhmmss'
   ],
   // example: Screenshot_2019-04-16-11-19-37-232_com.google.a.jpg
   [

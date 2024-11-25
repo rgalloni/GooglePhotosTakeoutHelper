@@ -35,20 +35,27 @@ extension X on Iterable<FileSystemEntity> {
             // https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper/issues/223
             // https://github.com/dart-lang/mime/issues/102
             // 🙃🙃
-            mime == 'model/vnd.mts';
+            mime == 'model/vnd.mts'||
+            // temporary support for Apple Raw image formats
+            p.extension(e.path).toLowerCase() == ".dng" ||
+            p.extension(e.path).toLowerCase() == ".cr2" ;
       });
 }
 
 extension Y on Stream<FileSystemEntity> {
   /// Easy extension allowing you to filter for files that are photo or video
   Stream<File> wherePhotoVideo() => whereType<File>().where((e) {
+        if (p.basename(e.path).startsWith('.')) return false;
         final mime = lookupMimeType(e.path) ?? "";
         return mime.startsWith('image/') ||
             mime.startsWith('video/') ||
             // https://github.com/TheLastGimbus/GooglePhotosTakeoutHelper/issues/223
             // https://github.com/dart-lang/mime/issues/102
             // 🙃🙃
-            mime == 'model/vnd.mts';
+            mime == 'model/vnd.mts' ||
+            // temporary support for Apple Raw image formats
+            p.extension(e.path).toLowerCase() == ".dng"||
+            p.extension(e.path).toLowerCase() == ".cr2" ;
       });
 }
 
